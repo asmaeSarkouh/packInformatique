@@ -16,7 +16,8 @@ class ChartController extends Controller
     //     ->select('materials.etat', 'materials.created_at')
     //     ->get();
     // return view('page.chart.index', compact('data'));
-    $materials=Material::all();
-    return view('welcome',compact('materials'));
+    $falseCount = Material::where('etats', false)->count();
+$trueCount = Material::where('etats', true)->count();
+    return view('welcome',compact('trueCount', 'falseCount' ));
    }
 }
